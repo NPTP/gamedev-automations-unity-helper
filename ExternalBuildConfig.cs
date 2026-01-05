@@ -2,20 +2,23 @@
 // ReSharper disable UnassignedField.Global
 // ReSharper disable ClassNeverInstantiated.Global
 // ReSharper disable ConvertToAutoProperty
+
+using UnityEngine;
+
 namespace NPTP.GamedevAutomationsUnityHelper
 {
-    public class ExternalBuildConfig
+    public struct ExternalBuildConfig
     {
         // These private field names have to match the build tool JSON naming for JsonUtility.FromJson calls to work cleanly.
-        private string output_path;
-        private string build_target;
-        private bool development_build;
-        private bool auto_connect_profiler;
-        private bool deep_profiling_support;
-        private bool script_debugging;
-        private string compression_method;
-        private string[] scripting_defines;
-        
+        [SerializeField] private string output_path;
+        [SerializeField] private string build_target;
+        [SerializeField] private bool development_build;
+        [SerializeField] private bool auto_connect_profiler;
+        [SerializeField] private bool deep_profiling_support;
+        [SerializeField] private bool script_debugging;
+        [SerializeField] private string compression_method;
+        [SerializeField] private string[] scripting_defines;
+
         public string OutputPath => output_path;
         public string BuildTarget => build_target;
         public bool DevelopmentBuild => development_build;
