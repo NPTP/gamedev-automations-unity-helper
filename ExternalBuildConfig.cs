@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace NPTP.GamedevAutomationsUnityHelper
 {
-    public struct ExternalBuildConfig
+    internal struct ExternalBuildConfig
     {
         // These private field names have to match the build tool JSON naming for JsonUtility.FromJson calls to work cleanly.
         [SerializeField] private string unity_output_path;

@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Text;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -24,7 +23,7 @@ namespace NPTP.GamedevAutomationsUnityHelper
         {
             try
             {
-                ExternalBuildConfig buildConfig = ParseJsonFromCommandLine<ExternalBuildConfig>(BUILD_CONFIG_CLI_ARGUMENT);
+                ExternalBuildConfig buildConfig = Utilities.ParseJsonFromCommandLine<ExternalBuildConfig>(BUILD_CONFIG_CLI_ARGUMENT);
                 
                 BuildOptions buildOptions = 0;
                 if (buildConfig.DevelopmentBuild) buildOptions |= BuildOptions.Development;
@@ -77,43 +76,13 @@ namespace NPTP.GamedevAutomationsUnityHelper
                 string executableName = Path.GetFileNameWithoutExtension(outputPath);
                 string outputFolder = Path.GetFullPath(Path.GetDirectoryName(outputPath)!);
 
-                deleteLocalFolderIfExists($"{executableName}_BurstDebugInformation_DoNotShip"); // Burst Debug
-                deleteLocalFolderIfExists($"{executableName}_BackUpThisFolder_ButDontShipItWithYourGame"); // IL2CPP
-
-                void deleteLocalFolderIfExists(string localFolderName)
-                {
-                    string fullPath = Path.Combine(outputFolder, localFolderName);
-                    if (Directory.Exists(fullPath))
-                    {
-                        Directory.Delete(fullPath, true);
-                    }
-                }
+                Utilities.DeleteLocalFolderIfExists($"{executableName}_BurstDebugInformation_DoNotShip", outputFolder); // Burst Debug
+                Utilities.DeleteLocalFolderIfExists($"{executableName}_BackUpThisFolder_ButDontShipItWithYourGame", outputFolder); // IL2CPP
             }
             catch (Exception e)
             {
                 Debug.LogError(e);
             }
-        }
-
-        private static T ParseJsonFromCommandLine<T>(string argument)
-        {
-            string base64EncodedArgument = GetArg($"-{argument}");
-            if (string.IsNullOrEmpty(base64EncodedArgument))
-            {
-                throw new Exception($"Missing -{argument} JSON argument.");
-            }
-
-            string json = Encoding.UTF8.GetString(Convert.FromBase64String(base64EncodedArgument));
-            return JsonUtility.FromJson<T>(json);
-        }
-        
-        private static string GetArg(string name)
-        {
-            string[] args = Environment.GetCommandLineArgs();
-            int index = Array.IndexOf(args, name);
-            return index >= 0 && index < args.Length - 1
-                ? args[index + 1]
-                : null;
         }
     }
 }
