@@ -50,7 +50,7 @@ namespace NPTP.GamedevAutomationsUnityHelper
                 BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
                 {
                     scenes = (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray(),
-                    locationPathName = Path.GetFullPath(buildConfig.OutputPath),
+                    locationPathName = Path.GetFullPath(buildConfig.BuildExecutableOutputPath),
                     options = buildOptions,
                     target = buildTarget,
                     targetGroup = BuildPipeline.GetBuildTargetGroup(buildTarget),

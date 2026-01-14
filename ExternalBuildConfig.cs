@@ -10,7 +10,7 @@ namespace NPTP.GamedevAutomationsUnityHelper
     internal struct ExternalBuildConfig
     {
         // These private field names have to match the build tool JSON naming for JsonUtility.FromJson calls to work cleanly.
-        [SerializeField] private string unity_output_path;
+        [SerializeField] private string unity_build_executable_output_path;
         [SerializeField] private string unity_build_target;
         [SerializeField] private bool unity_development_build;
         [SerializeField] private bool unity_auto_connect_profiler;
@@ -19,7 +19,7 @@ namespace NPTP.GamedevAutomationsUnityHelper
         [SerializeField] private string unity_compression_method;
         [SerializeField] private string[] unity_scripting_defines;
 
-        public string OutputPath => unity_output_path;
+        public string BuildExecutableOutputPath => unity_build_executable_output_path;
         public string BuildTarget => unity_build_target;
         public bool DevelopmentBuild => unity_development_build;
         public bool AutoConnectProfiler => unity_auto_connect_profiler;
