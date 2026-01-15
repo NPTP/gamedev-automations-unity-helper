@@ -25,6 +25,8 @@ namespace NPTP.GamedevAutomationsUnityHelper
             {
                 ExternalBuildConfig buildConfig = Utilities.ParseJsonFromCommandLine<ExternalBuildConfig>(BUILD_CONFIG_CLI_ARGUMENT);
                 
+                Debug.Log($"{nameof(ExternalBuildConfig)} parsed from command line JSON : {buildConfig.ToString()}");
+                
                 BuildOptions buildOptions = 0;
                 if (buildConfig.DevelopmentBuild) buildOptions |= BuildOptions.Development;
                 if (buildConfig.AutoConnectProfiler) buildOptions |= BuildOptions.ConnectWithProfiler;
@@ -46,7 +48,7 @@ namespace NPTP.GamedevAutomationsUnityHelper
                 }
                 
                 BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildConfig.BuildTarget);
-
+                
                 BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
                 {
                     scenes = (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray(),
