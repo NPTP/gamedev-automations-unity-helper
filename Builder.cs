@@ -47,6 +47,9 @@ namespace NPTP.GamedevAutomationsUnityHelper
                 
                 BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildConfig.BuildTarget);
 
+                Debug.Log("BUILD CONFIG!");
+                Debug.Log(buildConfig.ToString());
+
                 BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
                 {
                     scenes = (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray(),
