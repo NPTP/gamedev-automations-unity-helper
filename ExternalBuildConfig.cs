@@ -3,6 +3,7 @@
 // ReSharper disable ClassNeverInstantiated.Global
 // ReSharper disable ConvertToAutoProperty
 
+using System.Text;
 using UnityEngine;
 
 namespace NPTP.GamedevAutomationsUnityHelper
@@ -27,5 +28,26 @@ namespace NPTP.GamedevAutomationsUnityHelper
         public bool ScriptDebugging => unity_script_debugging;
         public string CompressionMethod => unity_compression_method;
         public string[] ScriptingDefines => unity_scripting_defines;
+
+        public override string ToString()
+        {
+            StringBuilder sb = new();
+            
+            sb.AppendLine(nameof(unity_build_executable_output_path) + ": " + unity_build_executable_output_path);
+            sb.AppendLine(nameof(unity_build_target) + ": " + unity_build_target);
+            sb.AppendLine(nameof(unity_development_build) + ": " + unity_development_build);
+            sb.AppendLine(nameof(unity_auto_connect_profiler) + ": " + unity_auto_connect_profiler);
+            sb.AppendLine(nameof(unity_deep_profiling_support) + ": " + unity_deep_profiling_support);
+            sb.AppendLine(nameof(unity_script_debugging) + ": " + unity_script_debugging);
+            sb.AppendLine(nameof(unity_compression_method) + ": " + unity_compression_method);
+
+            sb.AppendLine(nameof(unity_scripting_defines) + ": ");
+            foreach (string define in unity_scripting_defines)
+            {
+                sb.AppendLine(define);
+            }
+            
+            return sb.ToString();
+        }
     }
 }
