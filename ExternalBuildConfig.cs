@@ -19,7 +19,7 @@ namespace NPTP.GamedevAutomationsUnityHelper
         [SerializeField] private bool unity_script_debugging;
         [SerializeField] private string unity_compression_method;
         [SerializeField] private string[] unity_scripting_defines;
-
+        
         public string BuildExecutableOutputPath => unity_build_executable_output_path;
         public string BuildTarget => unity_build_target;
         public bool DevelopmentBuild => unity_development_build;
@@ -31,7 +31,7 @@ namespace NPTP.GamedevAutomationsUnityHelper
 
         public override string ToString()
         {
-            StringBuilder sb = new();
+            StringBuilder sb = new StringBuilder();
             
             sb.AppendLine(nameof(unity_build_executable_output_path) + ": " + unity_build_executable_output_path);
             sb.AppendLine(nameof(unity_build_target) + ": " + unity_build_target);

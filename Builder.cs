@@ -78,8 +78,11 @@ namespace NPTP.GamedevAutomationsUnityHelper
                 string executableName = Path.GetFileNameWithoutExtension(outputPath);
                 string outputFolder = Path.GetFullPath(Path.GetDirectoryName(outputPath)!);
 
-                Utilities.DeleteLocalFolderIfExists($"{executableName}_BurstDebugInformation_DoNotShip", outputFolder); // Burst Debug
-                Utilities.DeleteLocalFolderIfExists($"{executableName}_BackUpThisFolder_ButDontShipItWithYourGame", outputFolder); // IL2CPP
+                // Burst Debug
+                Utilities.DeleteLocalFolderIfExists($"{executableName}_BurstDebugInformation_DoNotShip", outputFolder); 
+                
+                // IL2CPP
+                Utilities.DeleteLocalFolderIfExists($"{executableName}_BackUpThisFolder_ButDontShipItWithYourGame", outputFolder);
             }
             catch (Exception e)
             {
