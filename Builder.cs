@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace NPTP.GamedevAutomationsUnityHelper
+namespace NPTP.GamedevAutomationsUnity
 {
     public static class Builder
     {
@@ -46,17 +46,20 @@ namespace NPTP.GamedevAutomationsUnityHelper
                 }
                 
                 BuildTarget buildTarget = (BuildTarget)Enum.Parse(typeof(BuildTarget), buildConfig.BuildTarget);
+
+                string locationPathName = Utilities.CreateValidFilePath(buildConfig.BuildExecutableOutputPath);
+                Debug.Log($"Location path name: {locationPathName}");
                 
                 BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
                 {
                     scenes = (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray(),
-                    locationPathName = Path.GetFullPath(buildConfig.BuildExecutableOutputPath),
+                    locationPathName = "G:/Gamedev/Builds/Testing/UnityBuild/Unity_Test.exe",
                     options = buildOptions,
                     target = buildTarget,
                     targetGroup = BuildPipeline.GetBuildTargetGroup(buildTarget),
                     extraScriptingDefines = buildConfig.ScriptingDefines
                 };
-
+                
                 BuildPipeline.BuildPlayer(buildPlayerOptions);
                 EditorApplication.Exit(SUCCESS_CODE);
             }

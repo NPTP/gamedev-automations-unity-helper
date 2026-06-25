@@ -1,6 +1,6 @@
 {
-    "name": "NPTP.GamedevAutomationsUnityHelper",
-    "rootNamespace": "NPTP.GamedevAutomationsUnityHelper",
+    "name": "NPTP.GamedevAutomationsUnity",
+    "rootNamespace": "NPTP.GamedevAutomationsUnity",
     "references": [],
     "includePlatforms": [
         "Editor"

@@ -6,7 +6,7 @@
 using System;
 using System.Text;
 
-namespace NPTP.GamedevAutomationsUnityHelper
+namespace NPTP.GamedevAutomationsUnity
 {
     internal struct BuildConfig
     {

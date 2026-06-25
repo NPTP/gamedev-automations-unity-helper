@@ -1,10 +1,23 @@
 using System;
 using System.IO;
 
-namespace NPTP.GamedevAutomationsUnityHelper
+namespace NPTP.GamedevAutomationsUnity
 {
     internal static class Utilities
     {
+        internal static string CreateValidFilePath(string filePath)
+        {
+            string fullPath = Path.GetFullPath(filePath);
+            string dir = Path.GetDirectoryName(fullPath);
+            
+            if (!string.IsNullOrEmpty(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            return fullPath;
+        }
+        
         internal static void DeleteLocalFolderIfExists(string localFolderName, string outputFolder)
         {
             string fullPath = Path.Combine(outputFolder, localFolderName);
