@@ -33,7 +33,7 @@ namespace NPTP.GamedevAutomationsUnity
         {
             BuildConfig config = new BuildConfig();
             string value;
-
+            
             config.unity_auto_connect_profiler = Utilities.HasCLIArg(nameof(unity_auto_connect_profiler));
             config.unity_deep_profiling_support = Utilities.HasCLIArg(nameof(unity_deep_profiling_support));
             config.unity_script_debugging = Utilities.HasCLIArg(nameof(unity_script_debugging));
@@ -49,7 +49,7 @@ namespace NPTP.GamedevAutomationsUnity
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-
+            
             sb.AppendLine(nameof(unity_build_executable_output_path) + ": " + unity_build_executable_output_path);
             sb.AppendLine(nameof(unity_build_target) + ": " + unity_build_target);
             sb.AppendLine(nameof(unity_development_build) + ": " + unity_development_build);
@@ -57,13 +57,8 @@ namespace NPTP.GamedevAutomationsUnity
             sb.AppendLine(nameof(unity_deep_profiling_support) + ": " + unity_deep_profiling_support);
             sb.AppendLine(nameof(unity_script_debugging) + ": " + unity_script_debugging);
             sb.AppendLine(nameof(unity_compression_method) + ": " + unity_compression_method);
-
-            sb.AppendLine(nameof(unity_scripting_defines) + ": ");
-            foreach (string define in unity_scripting_defines)
-            {
-                sb.AppendLine(define);
-            }
-
+            sb.AppendLine(nameof(unity_scripting_defines) + ": " + Utilities.CollectionToString(unity_scripting_defines));
+            
             return sb.ToString();
         }
     }

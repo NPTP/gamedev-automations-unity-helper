@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace NPTP.GamedevAutomationsUnity
 {
@@ -43,6 +46,30 @@ namespace NPTP.GamedevAutomationsUnity
                 : null;
 
             return value != null;
+        }
+
+        public static string CollectionToString<T>(IEnumerable<T> collection)
+        {
+            if (collection == null)
+            {
+                return "null";
+            }
+
+            T[] array = collection.ToArray();
+            StringBuilder sb = new StringBuilder();
+            sb.Append('[');
+            
+            for (int i = 0; i < array.Length; i++)
+            {
+                sb.Append(array[i].ToString());
+                if (i < array.Length - 1)
+                {
+                    sb.Append(", ");
+                }
+            }
+
+            sb.Append('[');
+            return sb.ToString();
         }
     }
 }
